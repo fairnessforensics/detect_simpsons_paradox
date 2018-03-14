@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="What is Simpson’s Paradox?" href="notebooks/simple_simpsons_paradox_intro.html" />
-    <link rel="prev" title="Reproducing the FLAIRS31 paper" href="FLAIRS31.html" />
+    <link rel="prev" title="Detecting Simpson’s Paradox’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,7 +32,6 @@
 <h3><a href="index.html">Table Of Contents</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="FLAIRS31.html">Reproducing the FLAIRS31 paper</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/simple_simpsons_paradox_intro.html">What is Simpson’s Paradox?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/exp_autompg.html">Auto Miles Per Gallon Data Experiments</a></li>
@@ -43,7 +42,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="FLAIRS31.html" title="previous chapter">Reproducing the FLAIRS31 paper</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Detecting Simpson’s Paradox’s documentation!</a></li>
       <li>Next: <a href="notebooks/simple_simpsons_paradox_intro.html" title="next chapter">What is Simpson’s Paradox?</a></li>
   </ul></li>
 </ul>
@@ -239,6 +238,87 @@ adds 1 noisy dimensions and an interacting char attribute</p>
 <dt id="sp_data_util.sp_plot">
 <code class="descclassname">sp_data_util.</code><code class="descname">sp_plot</code><span class="sig-paren">(</span><em>df</em>, <em>x_col</em>, <em>y_col</em>, <em>color_col</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sp_data_util/spplots.html#sp_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sp_data_util.sp_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>create SP vizualization plot from 2 columns of a df</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sp_data_util.geometric_2d_gmm_sp">
+<code class="descclassname">sp_data_util.</code><code class="descname">geometric_2d_gmm_sp</code><span class="sig-paren">(</span><em>r_clusters</em>, <em>cluster_size</em>, <em>cluster_spread</em>, <em>p_sp_clusters</em>, <em>domain_range</em>, <em>k</em>, <em>N</em>, <em>p_clusters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sp_data_util/SPData.html#geometric_2d_gmm_sp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sp_data_util.geometric_2d_gmm_sp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample from a gaussian mixture model with Simpson’s Paradox and spread means
+return data in a data fram</p>
+<dl class="docutils">
+<dt>r_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1]</span></dt>
+<dd>correlation coefficient of clusters</dd>
+<dt>cluster_size <span class="classifier-delimiter">:</span> <span class="classifier">2 vector</span></dt>
+<dd>variance in each direction of each cluster</dd>
+<dt>cluster_spread <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1]</span></dt>
+<dd>pearson correlation of means</dd>
+<dt>p_sp_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar in [0,1]</span></dt>
+<dd>portion of clusters with SP</dd>
+<dt>p_clusters <span class="classifier-delimiter">:</span> <span class="classifier">vector in [0,1)^k, optional</span></dt>
+<dd>probabilty of membership of a sample in each cluster (controls relative
+size of clusters) default is [1.0/k]*k for uniform</dd>
+<dt>domain_range <span class="classifier-delimiter">:</span> <span class="classifier">[xmin, xmax, ymin, ymax]</span></dt>
+<dd>planned region for points to be in, means will be in middle 80%</dd>
+<dt>k <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd>number of clusters</dd>
+<dt>N <span class="classifier-delimiter">:</span> <span class="classifier">scalar</span></dt>
+<dd>number of points</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="sp_data_util.geometric_indep_views_gmm_sp">
+<code class="descclassname">sp_data_util.</code><code class="descname">geometric_indep_views_gmm_sp</code><span class="sig-paren">(</span><em>d</em>, <em>r_clusters</em>, <em>cluster_size</em>, <em>cluster_spread</em>, <em>p_sp_clusters</em>, <em>domain_range</em>, <em>k</em>, <em>N</em>, <em>p_clusters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sp_data_util/SPData.html#geometric_indep_views_gmm_sp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sp_data_util.geometric_indep_views_gmm_sp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample from a gaussian mixture model with Simpson’s Paradox and spread means
+return data in a data fram</p>
+<dl class="docutils">
+<dt>d <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd>number of independent views, groups of 3 columns with sp</dd>
+<dt>r_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1] or list of d</span></dt>
+<dd>correlation coefficient of clusters</dd>
+<dt>cluster_size <span class="classifier-delimiter">:</span> <span class="classifier">2 vector or list of d</span></dt>
+<dd>variance in each direction of each cluster</dd>
+<dt>cluster_spread <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1] list of d</span></dt>
+<dd>pearson correlation of means</dd>
+<dt>p_sp_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar in [0,1] list of d</span></dt>
+<dd>portion of clusters with SP</dd>
+<dt>p_clusters <span class="classifier-delimiter">:</span> <span class="classifier">vector in [0,1)^k, optional or list of d vectors</span></dt>
+<dd>probabilty of membership of a sample in each cluster (controls relative
+size of clusters) default is [1.0/k]*k for uniform</dd>
+<dt>domain_range <span class="classifier-delimiter">:</span> <span class="classifier">[xmin, xmax, ymin, ymax] list of d</span></dt>
+<dd>planned region for points to be in, means will be in middle 80%</dd>
+<dt>k <span class="classifier-delimiter">:</span> <span class="classifier">integer or list of d</span></dt>
+<dd>number of clusters</dd>
+<dt>N <span class="classifier-delimiter">:</span> <span class="classifier">scalar</span></dt>
+<dd>number of points, shared across all views</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="sp_data_util.data_only_geometric_2d_gmm">
+<code class="descclassname">sp_data_util.</code><code class="descname">data_only_geometric_2d_gmm</code><span class="sig-paren">(</span><em>r_clusters</em>, <em>cluster_size</em>, <em>cluster_spread</em>, <em>p_sp_clusters</em>, <em>domain_range</em>, <em>k</em>, <em>N</em>, <em>p_clusters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sp_data_util/SPData.html#data_only_geometric_2d_gmm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sp_data_util.data_only_geometric_2d_gmm" title="Permalink to this definition">¶</a></dt>
+<dd><p>private, sampler only, returns raw variables, utily for sharing in other
+samplers
+Sample from a gaussian mixture model with Simpson’s Paradox and spread means</p>
+<dl class="docutils">
+<dt>r_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1]</span></dt>
+<dd>correlation coefficient of clusters</dd>
+<dt>cluster_size <span class="classifier-delimiter">:</span> <span class="classifier">2 vector</span></dt>
+<dd>variance in each direction of each cluster</dd>
+<dt>cluster_spread <span class="classifier-delimiter">:</span> <span class="classifier">scalar [0,1]</span></dt>
+<dd>pearson correlation of means</dd>
+<dt>p_sp_clusters <span class="classifier-delimiter">:</span> <span class="classifier">scalar in [0,1]</span></dt>
+<dd>portion of clusters with SP</dd>
+<dt>p_clusters <span class="classifier-delimiter">:</span> <span class="classifier">vector in [0,1)^k, optional</span></dt>
+<dd>probabilty of membership of a sample in each cluster (controls relative
+size of clusters) default is [1.0/k]*k for uniform</dd>
+<dt>domain_range <span class="classifier-delimiter">:</span> <span class="classifier">[xmin, xmax, ymin, ymax]</span></dt>
+<dd>planned region for points to be in, means will be in middle 80%</dd>
+<dt>k <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd>number of clusters</dd>
+<dt>N <span class="classifier-delimiter">:</span> <span class="classifier">scalar</span></dt>
+<dd>number of points</dd>
+</dl>
 </dd></dl>
 
 </div>

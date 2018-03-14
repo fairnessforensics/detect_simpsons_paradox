@@ -120,27 +120,6 @@
 
     <span class="k">return</span> <span class="n">result_df</span>
 
-<span class="k">def</span> <span class="nf">isReverse</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compare the signs of a and b</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    -----------</span>
-<span class="sd">    a : number(int or float)</span>
-<span class="sd">    b : number(int or float)</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    --------</span>
-<span class="sd">    boolean value : If True turns, a and b have the reverse sign.</span>
-<span class="sd">                    If False returns, a and b have the same sign.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-       <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-       <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">else</span><span class="p">:</span>
-       <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">isReverse</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -231,9 +210,13 @@
                 <span class="n">all_corr_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_corr_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_list</span><span class="p">]</span>
                 <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">all_corr_info</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;allCorr&#39;</span><span class="p">,</span><span class="s1">&#39;attr1&#39;</span><span class="p">,</span><span class="s1">&#39;attr2&#39;</span><span class="p">])</span>
 
-                <span class="c1"># Convert index from float to int</span>
-                <span class="n">temp_df</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">attr1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-                <span class="n">temp_df</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">attr2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                <span class="c1"># # Convert index from float to int</span>
+                <span class="c1"># temp_df.attr1 = temp_df.attr1.astype(int)</span>
+                <span class="c1"># temp_df.attr2 = temp_df.attr2.astype(int)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">continuousAttrs_labels</span><span class="p">)</span>
+                <span class="c1"># Convert indices to attribute names for readabiity</span>
+                <span class="n">temp_df</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">continuousAttrs_labels</span><span class="p">[</span><span class="n">temp_df</span><span class="o">.</span><span class="n">attr1</span><span class="p">]</span>
+                <span class="n">temp_df</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">continuousAttrs_labels</span><span class="p">[</span><span class="n">temp_df</span><span class="o">.</span><span class="n">attr2</span><span class="p">]</span>
 
                 <span class="n">temp_df</span><span class="p">[</span><span class="s2">&quot;reverseCorr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reverse_list</span>
                 <span class="n">len_list</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reverse_list</span><span class="p">)</span>
