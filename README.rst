@@ -11,7 +11,7 @@ To use the package, download (or clone) and:
 
 .. code-block:: bash
 
-  cd DetectSimpsonParadox/
+  cd detect_simpsons_paradox/
   pip install .
 
 To use the package, after installed::
