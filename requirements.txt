@@ -8,7 +8,7 @@ CommonMark==0.5.4
 cycler==0.10.0
 decorator==4.2.1
 detect-simpsons-paradox==0.1
-Django==2.2.21
+Django==2.2.22
 docutils==0.14
 entrypoints==0.2.3
 html5lib==1.0.1
